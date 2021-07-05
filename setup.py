@@ -9,7 +9,7 @@ setup(
     author_email='gemerden@gmail.com',
     url='https://github.com/gemerden/snapshot',
     license='MIT License',
-    packages=['snapshot/snapshot'],
+    packages=['sources'],
     install_requires=[],
     classifiers=[
         # How mature is this project? Common values are

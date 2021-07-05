@@ -1,6 +1,11 @@
+from os.path import abspath
 from unittest import TestCase
 
-from snapshot import Snapshot
+import sys
+sys.path.append(abspath(__file__ + '/../../..'))
+
+
+from sources import Snapshot
 
 
 class testSnapShot(TestCase):

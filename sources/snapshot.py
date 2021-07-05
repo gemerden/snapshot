@@ -42,7 +42,7 @@ class Snapshot(object):
         return self.get_tuple(obj)
 
     def __call__(self, objs):
-        """ iterator over a number of snapshot created from 'objs' """
+        """ iterator over a number of snapshots created from 'objs' """
         return map(self.get_tuple, objs)
 
 
