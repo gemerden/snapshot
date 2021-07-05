@@ -1,5 +1,5 @@
 ```markdown
-![tests](https://github.com/gemerden/snapshot/actions/workflows/python-app.yml/badge.svg)
+![example workflow](https://github.com/gemerden/snapshot/actions/workflows/python-app.yml/badge.svg)
 ```
 
 # Snapshot
