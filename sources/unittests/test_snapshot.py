@@ -5,7 +5,7 @@ from unittest import TestCase
 # sys.path.append(abspath(__file__ + '/../../..'))
 #
 
-from sources import Snapshot
+from sources.snapshot import Snapshot
 
 
 class testSnapShot(TestCase):
