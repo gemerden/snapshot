@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from snapshot.snapshot import Snapshot
+from snapshot import Snapshot
 
 
 class testSnapShot(TestCase):
