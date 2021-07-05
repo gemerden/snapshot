@@ -75,6 +75,10 @@ class testSnapShot(TestCase):
         snaps = Some.snapshot(somes)  # returns iterator
         assert [s.a for s in snaps] == list(range(10))
 
+    def test_exceptions(self):
+        with self.assertRaises(TypeError):
+            Snapshot(a=())  # only string or callable
+
 
 
 
