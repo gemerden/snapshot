@@ -20,7 +20,7 @@ class Snapshot(object):
         self.tuple_type = namedtuple(name, self.names)
 
     def _get_getter(self, names, named):
-        """ create function that applies all getters to an object """
+        """ creates getters per attribute and function that applies these getters to an object """
         getters = [attrgetter(n) for n in names]
         for name, getter in named.items():
             if isinstance(getter, str):
@@ -28,7 +28,7 @@ class Snapshot(object):
             elif callable(getter):
                 getters.append(getter)
             else:
-                raise ValueError(f"{name} in {self.__class__.__name__} must either be string (attr name) or callable")
+                raise TypeError(f"{name} in {self.__class__.__name__} must either be string (attr name) or callable")
 
         def get_namedtuple(obj):
             return self.tuple_type(*(g(obj) for g in getters))
@@ -44,28 +44,4 @@ class Snapshot(object):
     def __call__(self, objs):
         """ iterator over a number of snapshots created from 'objs' """
         return map(self.get_tuple, objs)
-
-
-if __name__ == '__main__':
-    """ small example: """
-
-    class Some(object):
-        snapshot = Snapshot('a', b='b', c=lambda obj: obj.c, r=lambda obj: obj.d ** 2, ea='e.a')
-
-        def __init__(self, a, b, c=None, d=None, e=None):
-            self.a = a
-            self.b = b
-            self.c = c
-            self.d = d
-            self.e = e
-
-
-    some = Some(1, 2, 3, 4, Some('ea', 0, 0, 0, 0))
-
-    snap = some.snapshot
-    assert (snap.a, snap.b, snap.c, snap.r, snap.ea) == (1, 2, 3, 16, 'ea')
-
-    a, b, c, r, ea = snap
-    assert (a, b, c, r, ea) == (1, 2, 3, 16, 'ea')
-
 
