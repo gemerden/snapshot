@@ -7,11 +7,11 @@ class Snapshot(object):
     def __init__(self, *names, **named):
         """
         :param names: names of attributes of the owner to be copied to the namedtuple directly
-        :param named: dict of name, string/callables:
-            - if string: the dot separated location of the tuple value in the object
+        :param named: dict of name: string/callables:
+            - if string: the dot separated location of the value in the object
             - if callable: called to get the tuple value from the object
         """
-        self.names = names + tuple(named)  #
+        self.names = names + tuple(named)  # all the attribute names in the namedtuple
         self.get_tuple = self._get_getter(names, named)
         self.tuple_type = None
 
@@ -20,7 +20,7 @@ class Snapshot(object):
         self.tuple_type = namedtuple(name, self.names)
 
     def _get_getter(self, names, named):
-        """ creates getters per attribute and function that applies these getters to an object """
+        """ creates getters per attribute and a function that applies these getters to an object """
         getters = [attrgetter(n) for n in names]
         for name, getter in named.items():
             if isinstance(getter, str):
