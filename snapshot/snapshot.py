@@ -17,7 +17,7 @@ class Snapshot(Generic[T]):
         """
         self.names = names + tuple(named)  # all the attribute names in the namedtuple
         self.get_namedtuple = self._getter(names, named)
-        self.tuple_type = lambda _: _  # satisfy mypy
+        self.tuple_type = lambda _: _  # satisfy mypy (could be None)
 
     def __set_name__(self, cls: Type[T], name: str):
         """ create the namedtuple class (subclass of tuple) """
@@ -34,7 +34,7 @@ class Snapshot(Generic[T]):
             else:
                 raise TypeError(f"{name} in {self.__class__.__name__} must either be string (attr name) or callable")
 
-        def get_namedtuple(obj: T):
+        def get_namedtuple(obj: T) -> Tuple:
             return self.tuple_type(*(g(obj) for g in getters))
 
         return get_namedtuple
