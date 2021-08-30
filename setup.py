@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='snapshot',
-    version='0.1.0',
+    version='0.1.1',
     description='Extract named tuples from classes with a simple descriptor',
     long_description='see <https://github.com/gemerden/snapshot>',  # after long battle to get markdown to work on PyPI
     author='Lars van Gemerden',
