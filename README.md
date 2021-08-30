@@ -58,7 +58,7 @@ assert (a, x, y, z, ea) == (1, 2, 3, 16, 5)
 ```
 
 ## Use Case
-A simple use case, where instances odf a class are transformed to be able to use an existing library:
+A simple use case, where instances of a class are transformed to be able to use an existing library:
 
 ```python
 import math
