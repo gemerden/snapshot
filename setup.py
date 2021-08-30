@@ -31,5 +31,5 @@ setup(
         'Programming Language :: Python :: 3.9',
     ],
     python_requires='>=3.6',
-    keywords='namedtuple transform descriptor utility performance',
+    keywords='namedtuple transform object descriptor utility performance',
 )

@@ -48,3 +48,4 @@ class Snapshot(Generic[T]):
     def __call__(self, objs: Iterable[T]) -> Iterable[Tuple]:
         """ iterator over a number of named tuples created from 'objs' as in __get__"""
         return map(self.get_namedtuple, objs)
+
