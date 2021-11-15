@@ -74,17 +74,17 @@ class TestSnapShot(unittest.TestCase):
         with self.assertRaises(TypeError):
             Snapshot(a=())  # only string or callable
 
-    def test_mypy(self):
-        import subprocess, os
-        file_path = os.path.abspath(os.path.join(__file__, '../../snapshot.py'))
-        mypy_path = os.path.abspath(os.path.join(__file__, '../../../venv/Scripts/mypy.exe'))
-        if not os.path.exists(mypy_path):
-            return
-        completed = subprocess.run([mypy_path,
-                                    file_path],
-                                   capture_output=True)
-        completed.check_returncode()
-        self.assertTrue('error' not in str(completed.stdout))
+    # def test_mypy(self):
+    #     import subprocess, os
+    #     file_path = os.path.abspath(os.path.join(__file__, '../../snapshot.py'))
+    #     mypy_path = os.path.abspath(os.path.join(__file__, '../../../venv/Scripts/mypy.exe'))
+    #     if not os.path.exists(mypy_path):
+    #         return
+    #     completed = subprocess.run([mypy_path,
+    #                                 file_path],
+    #                                capture_output=True)
+    #     completed.check_returncode()
+    #     self.assertTrue('error' not in str(completed.stdout))
 
 
 if __name__ == '__main__':
